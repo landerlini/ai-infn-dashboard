@@ -21,11 +21,12 @@ __dashboards__ = {
         f"{__name__}-{k}",
         server=server,
         url_base_pathname=f"/{k}/",
-    ) for k in ('prom',)
+    ) for k in ('prom', 'vkd')
 }
 
 for dashboard, dash_app in __dashboards__.items():
     dash_app.layout = getattr(aiinfn_dash, f"board_{dashboard}").layout()
+    getattr(aiinfn_dash, f"board_{dashboard}").register_callbacks(dash_app)
 
 for view_func in server.view_functions:
     for dash_app in __dashboards__.values():

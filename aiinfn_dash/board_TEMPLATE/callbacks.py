@@ -3,10 +3,11 @@ import logging
 
 from aiinfn_dash.auth import User
 
+
 def register_callbacks(app):
     @app.callback(
-        dash.Output('prom:title', 'children'),
-        dash.Input('prom:my-input', 'value'),
+        dash.Output('title', 'children'),
+        dash.Input('my-input', 'value'),
     )
     def update_title(my_input):
         logging.info("Called update_title")
