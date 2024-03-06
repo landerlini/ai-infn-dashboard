@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["aiinfn_dash"]
+
+
+
+[project]
+name = "ai-infn-dashboard"
+description = "The user dashboard for the AI-INFN platform"
+readme = "README.md"
+
+authors = [
+  {name = "Lucio Anderlini", email = "Lucio.Anderlini@fi.infn.it"},
+  {name = "Rosa Petrini", email = "Rosa.Petrini@fi.infn.it"},
+  ]
+
+license = {text = "GPL-3"}
+
+keywords = ["dashboard", "kubernetes", "kueue", "analysis facilities"]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3",
+    "Operating System :: POSIX :: Linux",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Physics",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Environment :: Console",
+  ]
+
+
+version = "0.0c1"
+
+dependencies = ["waitress", "flask", "dash", "pandas", "prometheus-client", "httpx"]
+
+
+[project.urls]
+"Homepage" = "https://github.com/landerlini/ai-infn-dashboard"
+"Source" = "https://github.com/landerlini/ai-infn-dashboard"
