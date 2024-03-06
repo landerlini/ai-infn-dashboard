@@ -33,6 +33,12 @@ for view_func in server.view_functions:
             server.view_functions[view_func] = auth.access_control('default')(server.view_functions[view_func])
 
 
+@server.route('/logout')
+@auth.oidc_logout
+def logout():
+    return "You've been successfully logged out!"
+
+
 if __name__ == '__main__':
     log_format = '%(asctime)-22s %(name)-10s %(levelname)-8s %(message)-90s'
     logging.basicConfig(

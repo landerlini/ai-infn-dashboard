@@ -10,4 +10,4 @@ from aiinfn_dash.auth import User
 def update_title(my_input):
     logging.info("Called update_title")
     with User.from_session() as user:
-        return user.name
+        return my_input.replace("%", f" {user.name} ") if '%' in my_input else f"{my_input} {user.name}"
