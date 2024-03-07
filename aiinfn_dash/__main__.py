@@ -53,7 +53,7 @@ if __name__ == '__main__':
             host=cfg.HOST,
             port=cfg.PORT,
             # For signing your certificate, refer to https://kracekumar.com/post/54437887454/ssl-for-flask-local-development/
-            ssl_context=('server.crt', 'server.key'),
+            #ssl_context=('server.crt', 'server.key'),
         )
     else:
         waitress.serve(server, host=cfg.HOST, port=cfg.PORT)
