@@ -20,7 +20,7 @@ __dashboards__ = {
     k: dash.Dash(
         f"{__name__}-{k}",
         server=server,
-        url_base_pathname=f"/{k}/",
+        url_base_pathname=f"/dash/{k}/",
     ) for k in ('prom', 'vkd')
 }
 
