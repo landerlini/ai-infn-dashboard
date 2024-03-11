@@ -11,5 +11,5 @@ IAM_SERVER = env.get('IAM_SERVER', "https://iam.cloud.infn.it")
 IAM_SCOPES = json.loads(env.get("IAM_SCOPES", '["openid", "profile", "wlcg.groups"]'))
 IAM_CLIENT_ID = env['IAM_CLIENT_ID']
 IAM_CLIENT_SECRET = env['IAM_CLIENT_SECRET']
-IAM_REDIRECT_URI = env.get("IAM_REDIRECT_URI", f"http://localhost:{PORT}/callback")
+IAM_REDIRECT_URI = env.get("IAM_REDIRECT_URI", f"https://localhost:{PORT}/callback")
 
