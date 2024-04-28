@@ -2,3 +2,51 @@ body {
     background-color: #222;
     color: #eee;
 }
+
+h1.main-title {
+    color: #fff;
+    font-family: sans-serif;
+}
+
+.dash-header {
+    color: black;
+}
+
+.user-menu {
+    background-color: #777;
+    position: absolute;
+    right: -5pt;
+    top: -5pt;
+    padding: 5pt 15pt 5pt 5pt;
+    margin: 0;
+    border-radius: 5pt;
+}
+
+.user-logo {
+    font-size: 160%;
+    padding: 0;
+    margin: 0;
+}
+
+.user-menu .user-name {
+    color: #fff;
+    padding-left: 5pt;
+    font-family: sans-serif;
+    font-weight: normal;
+}
+
+.footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #111;
+    font-size: 90%;
+    color: #888;
+    padding: 10pt 5pt 5pt 15pt;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #ccc;
+}
