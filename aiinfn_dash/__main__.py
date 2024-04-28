@@ -1,4 +1,4 @@
-from flask import Flask, session as flask_session
+from flask import Flask, session as flask_session, send_from_directory
 import dash
 import logging
 import waitress
@@ -12,6 +12,7 @@ server = Flask(__name__)
 server.config.update(
     OIDC_REDIRECT_URI=cfg.IAM_REDIRECT_URI,
     SECRET_KEY=cfg.FLASK_SECRET,
+    OIDC_CLOCK_SKEW=cfg.OIDC_CLOCK_SKEW,
 )
 auth = configure_authentication(server)
 
@@ -21,6 +22,7 @@ __dashboards__ = {
         f"{__name__}-{k}",
         server=server,
         url_base_pathname=f"/dash/{k}/",
+        external_stylesheets=[f"/dash/assets/{k}.css"],
     ) for k in ('prom', 'vkd')
 }
 
@@ -34,10 +36,15 @@ for view_func in server.view_functions:
             server.view_functions[view_func] = auth.access_control('default')(server.view_functions[view_func])
 
 
-@server.route('/logout')
+@server.route('/dash/logout')
 @auth.oidc_logout
 def logout():
     return "You've been successfully logged out!"
+
+
+@server.route('/dash/assets/<path:path>')
+def assets(path):
+    return send_from_directory('assets', path)
 
 
 if __name__ == '__main__':
@@ -53,6 +60,7 @@ if __name__ == '__main__':
             host=cfg.HOST,
             port=cfg.PORT,
             # For signing your certificate, refer to https://kracekumar.com/post/54437887454/ssl-for-flask-local-development/
+            ssl_context='adhoc' if cfg.SELF_SIGN_SSL_CERTIFICATE else None,
             #ssl_context=('server.crt', 'server.key'),
         )
     else:

@@ -34,7 +34,7 @@ classifiers = [
 
 version = "0.0c1"
 
-dependencies = ["waitress", "flask", "dash", "pandas", "prometheus-client", "httpx"]
+dependencies = ["waitress", "flask", "dash", "pandas", "prometheus-client", "httpx", "flask-pyoidc"]
 
 
 [project.urls]
